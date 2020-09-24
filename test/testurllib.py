@@ -21,5 +21,28 @@ import urllib.request
 # except urllib.error.URLError as e:
 #     print("time out!")
 
-response = urllib.request.urlopen("http://httpbin.org/get")
-print(response.status)
+# response = urllib.request.urlopen("http://www.baidu.com")
+# # print(response.status)
+# print(response.getheader("Server"))
+
+# url = "https://www.douban.com"
+
+# import urllib.parse
+# url = "http://httpbin.org/post"
+# headers = {
+#     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0"
+# }
+# data = bytes(urllib.parse.urlencode({'name':'eric'}),encoding= "utf-8")
+# req = urllib.request.Request(url=url, data= data, headers= headers, method="POST")
+# response = urllib.request.urlopen(req)
+# print(response.read().decode("utf-8"))
+
+import urllib.parse
+url = "http://www.douban.com"
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0"
+}
+data = bytes(urllib.parse.urlencode({'name':'eric'}),encoding= "utf-8")
+req = urllib.request.Request(url=url, data= data, headers= headers, method="POST")
+response = urllib.request.urlopen(req)
+print(response.read().decode("utf-8"))
