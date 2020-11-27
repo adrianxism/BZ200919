@@ -54,6 +54,7 @@ def getData(baseurl):
                 ctitle = title[0]  # 添加中文名
                 data.append(ctitle)
                 otitle = title[1].replace("/", "")  # 把/替换成空格
+                 
                 data.append(otitle)
             else:
                 data.append(title[0])
@@ -68,6 +69,7 @@ def getData(baseurl):
             inq = re.findall(findInq, item)
             if len(inq) != 0:
                 inq = inq[0].replace("。", "")  # 去掉句号
+                 
                 data.append(inq)
             else:
                 data.append(" ")  # 如果没有评论，就留空
@@ -133,7 +135,7 @@ def saveData2DB(datalist, dbpath):
             data[index] = '"' + data[index] + '"'
         sql = '''
             insert into movie250 (
-            info_link, pic_info, cname, ename, score, rated, introduction, info)
+            info_link, pic_link, cname, ename, score, rated, introduction, info)
             values(%s)''' % ",".join(data)
         print(sql)
         cur.execute(sql)
